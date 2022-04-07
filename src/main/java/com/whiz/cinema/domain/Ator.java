@@ -3,11 +3,10 @@ package com.whiz.cinema.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -24,6 +23,15 @@ public class Ator implements Serializable {
     private String nome;
     private String papelDoAtor;
 
+    @ManyToMany(mappedBy = "atores")
+    @ToString.Exclude
+    private List<Filme> filmes = new ArrayList<>();
+
+    public Ator(Long id, String nome, String papelDoAtor) {
+        this.id = id;
+        this.nome = nome;
+        this.papelDoAtor = papelDoAtor;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,21 +1,21 @@
 package com.whiz.cinema.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.whiz.cinema.enuns.EnumGeneroFilme;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Filme implements Serializable {
 
@@ -25,6 +25,18 @@ public class Filme implements Serializable {
     private String titulo;
     private Integer duracao;
     private EnumGeneroFilme genero;
+
+    @ManyToMany
+    @JsonManagedReference("ator_id")
+    @ToString.Exclude
+    private List<Ator> atores = new ArrayList<>();
+
+    public Filme(Long id, String titulo, Integer duracao, EnumGeneroFilme genero) {
+        this.id = id;
+        this.titulo = titulo;
+        this.duracao = duracao;
+        this.genero = genero;
+    }
 
     @Override
     public boolean equals(Object o) {
