@@ -26,17 +26,15 @@ public class Filme implements Serializable {
     private Integer duracao;
     private EnumGeneroFilme genero;
 
-    @ManyToMany
-    @JsonManagedReference("ator_id")
+
+    @OneToMany(mappedBy = "filme")
     @ToString.Exclude
     private List<Ator> atores = new ArrayList<>();
 
-    public Filme(Long id, String titulo, Integer duracao, EnumGeneroFilme genero) {
-        this.id = id;
-        this.titulo = titulo;
-        this.duracao = duracao;
-        this.genero = genero;
-    }
+//    @ToString.Exclude
+//    @OneToMany(mappedBy = "id.filme")
+//    private List<Sessao> sessaos = new ArrayList<>(); //
+
 
     @Override
     public boolean equals(Object o) {
