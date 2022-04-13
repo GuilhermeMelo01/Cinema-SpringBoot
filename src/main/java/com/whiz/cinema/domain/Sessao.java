@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +33,24 @@ public class Sessao implements Serializable {
         this.horario = horario;
     }
 
-    public void registrarFilme(){
-
+//    @JsonIgnore
+    public Filme getFilme(){
+        return id.getFilme();
     }
 
-    public void cadeirasDisponiveis(){
-
+//    @JsonIgnore
+    public Ingresso getIngresso(){
+        return id.getIngresso();
     }
+
+
+//    public void registrarFilme(){
+//
+//    }
+//
+//    public void cadeirasDisponiveis(){
+//
+//    }
 
     @Override
     public boolean equals(Object o) {

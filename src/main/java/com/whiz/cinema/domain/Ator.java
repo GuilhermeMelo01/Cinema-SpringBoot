@@ -5,6 +5,8 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -23,9 +25,9 @@ public class Ator implements Serializable {
 
 //    @JsonIgnore
     @JoinColumn(name = "filme_id")
-    @ManyToOne
+    @ManyToMany
     @ToString.Exclude
-    private Filme filme;
+    private List<Filme> filmes = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

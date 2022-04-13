@@ -25,9 +25,9 @@ public class Ingresso implements Serializable {
     private EnumTipoIngresso tipo;
     private EnumCategoriaIngresso categoria;
 
-    @OneToMany(mappedBy = "id.ingresso")
-    @ToString.Exclude
-    private List<Sessao> sessaos = new ArrayList<>();
+//    @OneToMany(mappedBy = "id.ingresso")
+//    @ToString.Exclude
+//    private List<Sessao> sessaos = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

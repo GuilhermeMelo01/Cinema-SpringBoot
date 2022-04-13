@@ -27,14 +27,13 @@ public class Filme implements Serializable {
     private EnumGeneroFilme genero;
 
 
-    @OneToMany(mappedBy = "filme")
+    @ManyToMany(mappedBy = "filmes")
     @ToString.Exclude
     private List<Ator> atores = new ArrayList<>();
 
 //    @ToString.Exclude
 //    @OneToMany(mappedBy = "id.filme")
-//    private List<Sessao> sessaos = new ArrayList<>(); //
-
+//    private List<Sessao> sessaos = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
